@@ -46,9 +46,28 @@ public class MainTests {
     @Test
     void shouldReturnException_whenAEqZero() {
         double a = Math.pow(10, -9);
-        double b = 12;
-        double c = 4;
+        double b = 1;
+        double c = 3;
 
+        assertThatThrownBy(() ->  solve(a, b, c))
+                .isInstanceOf(ArithmeticException.class);
+    }
+
+    @Test
+    void shouldReturnException_whenAIsNull() {
+        Double a = null;
+        double b = 1;
+        double c = 5;
+
+        assertThatThrownBy(() ->  solve(a, b, c))
+                .isInstanceOf(NullPointerException.class);
+    }
+
+    @Test
+    void shouldReturnException_whenAEqZero_2() {
+        double a = 0;
+        double b = 1;
+        double c = 3;
         assertThatThrownBy(() ->  solve(a, b, c))
                 .isInstanceOf(ArithmeticException.class);
     }

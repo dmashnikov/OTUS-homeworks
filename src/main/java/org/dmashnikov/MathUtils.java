@@ -9,7 +9,7 @@ public class MathUtils {
     public static List<Double> solve(double a, double b, double c) {
         List<Double> solutions = new ArrayList<>();
         double D = b * b - 4 * a * c;
-        if (a < EPSILON && a > 0) {
+        if (a < EPSILON && a >= 0) {
             throw new ArithmeticException();
         }
         if (D < 0) {
@@ -27,6 +27,6 @@ public class MathUtils {
             solutions.add(x2);
             return solutions;
         }
-        return null;
+        return solutions;
     }
 }

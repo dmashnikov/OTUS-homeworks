@@ -3,6 +3,7 @@ package org.dmashnikov;
 import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
+import static org.dmashnikov.MathUtils.solve;
 
 import java.util.List;
 
@@ -14,8 +15,7 @@ public class MainTests {
         double b = 3;
         double c = 7;
 
-        MathUtils mathUtils = new MathUtils();
-        List<Double> actual = mathUtils.solve(a, b, c);
+        List<Double> actual = solve(a, b, c);
         assertThat(actual).isEmpty();
     }
 
@@ -26,9 +26,30 @@ public class MainTests {
         double c = 4;
         double expected = -0.666666;
 
-        MathUtils mathUtils = new MathUtils();
-        List<Double> actual = mathUtils.solve(a, b, c);
+        List<Double> actual = solve(a, b, c);
         assertThat(actual.size()).isEqualTo(1);
         assertThat(actual.get(0)).isEqualTo(expected, Offset.offset(0.000005));
+    }
+
+    @Test
+    void shouldReturnTwoValues_whenDiscriminantMoreZero() {
+        double a = 5;
+        double b = 12;
+        double c = 4;
+        List<Double> expected = List.of(-2d, -0.4d);
+
+        List<Double> actual = solve(a, b, c);
+        assertThat(actual.size()).isEqualTo(2);
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnException_whenAEqZero() {
+        double a = Math.pow(10, -9);
+        double b = 12;
+        double c = 4;
+
+        assertThatThrownBy(() ->  solve(a, b, c))
+                .isInstanceOf(ArithmeticException.class);
     }
 }

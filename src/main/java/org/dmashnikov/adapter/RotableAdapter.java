@@ -1,11 +1,12 @@
-package org.dmashnikov;
+package org.dmashnikov.adapter;
+
+import org.dmashnikov.model.IRotable;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class RotableAdapter implements IRotable {
 
-    private HashMap<String,Object> rotateMap;
+    private final HashMap<String,Object> rotateMap;
 
     public RotableAdapter(HashMap<String, Object> commands) {
         this.rotateMap = commands;

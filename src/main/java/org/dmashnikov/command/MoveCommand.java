@@ -1,20 +1,22 @@
 package org.dmashnikov.command;
 
-public class MoveCommand implements IMoveCommand {
-    private int x;
-    private int y;
-    private int dx;
-    private int dy;
+import org.dmashnikov.adapter.MovableAdapter;
 
-    public MoveCommand(int x, int y, int dx, int dy) {
-        this.x = x;
-        this.y = y;
-        this.dx = dx;
-        this.dy = dy;
+import java.util.Vector;
+
+public class MoveCommand {
+    private final MovableAdapter moveAdapter;
+    public MoveCommand(MovableAdapter moveAdapter) {
+        this.moveAdapter = moveAdapter;
     }
-    @Override
-    public void move() {
-        x += dx;
-        y += dy;
+
+    public void execute() {
+        Vector position = moveAdapter.getPosition();
+        Vector velocity = moveAdapter.getVelocity();
+
+        Vector res = new Vector();
+        res.add(0, (int) position.get(0) + (int) velocity.get(0));
+        res.add(1, (int) position.get(1) + (int) velocity.get(1));
+        moveAdapter.setPosition(res);
     }
 }

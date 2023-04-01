@@ -1,17 +1,17 @@
 package org.dmashnikov.command;
 
-public class RotateCommand implements IRotateCommand{
+import org.dmashnikov.adapter.RotableAdapter;
 
-    private int degree;
-    private int delta;
-
-    public RotateCommand(int degree, int delta) {
-        this.degree = degree;
-        this.delta = delta;
+public class RotateCommand {
+    private final RotableAdapter rotableAdapter;
+    public RotateCommand(RotableAdapter rotableAdapter) {
+        this.rotableAdapter = rotableAdapter;
     }
 
-    @Override
-    public void rotate() {
-        degree += delta;
+    public void execute() {
+        int dir = rotableAdapter.getDirection();
+        int angV = rotableAdapter.getAngularVelocity();
+        int dirNum = rotableAdapter.getDirectionNumber();
+        rotableAdapter.setDirection((dir + angV)%dirNum);
     }
 }

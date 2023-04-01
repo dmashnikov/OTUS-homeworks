@@ -1,4 +1,4 @@
-package org.dmashnikov;
+package org.dmashnikov.model;
 
 import java.util.Vector;
 

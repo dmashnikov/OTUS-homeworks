@@ -1,4 +1,4 @@
-package org.dmashnikov;
+package org.dmashnikov.model;
 
 public interface IRotable {
     int getDirection();

@@ -2,6 +2,8 @@ package org.dmashnikov;
 
 
 import org.assertj.core.api.Assertions;
+import org.dmashnikov.adapter.MovableAdapter;
+import org.dmashnikov.command.MoveCommand;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

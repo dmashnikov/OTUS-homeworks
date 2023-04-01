@@ -1,10 +1,11 @@
 package org.dmashnikov;
 
 import org.assertj.core.api.Assertions;
+import org.dmashnikov.adapter.RotableAdapter;
+import org.dmashnikov.command.RotateCommand;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.Vector;
 
 public class RotateTests {
 

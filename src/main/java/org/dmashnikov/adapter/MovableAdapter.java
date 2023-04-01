@@ -1,10 +1,12 @@
-package org.dmashnikov;
+package org.dmashnikov.adapter;
+
+import org.dmashnikov.model.IMovable;
 
 import java.util.HashMap;
 import java.util.Vector;
 
-public class MovableAdapter implements IMovable{
-    private HashMap<String,Object> moveMap;
+public class MovableAdapter implements IMovable {
+    private final HashMap<String,Object> moveMap;
 
     public MovableAdapter(HashMap<String, Object> commands) {
         this.moveMap = commands;

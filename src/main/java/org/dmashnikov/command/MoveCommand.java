@@ -1,15 +1,17 @@
 package org.dmashnikov.command;
 
 import org.dmashnikov.adapter.MovableAdapter;
+import org.dmashnikov.model.ICommand;
 
 import java.util.Vector;
 
-public class MoveCommand {
+public class MoveCommand implements ICommand {
     private final MovableAdapter moveAdapter;
     public MoveCommand(MovableAdapter moveAdapter) {
         this.moveAdapter = moveAdapter;
     }
 
+    @Override
     public void execute() {
         Vector position = moveAdapter.getPosition();
         Vector velocity = moveAdapter.getVelocity();

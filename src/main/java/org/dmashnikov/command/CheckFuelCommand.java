@@ -12,6 +12,6 @@ public class CheckFuelCommand implements ICommand {
     @Override
     public void execute() {
         Integer fuel = checkableFuelAdapter.getFuel();
-        if (fuel < 0) throw new CommandException("No more fuel");
+        if (fuel <= 0) throw new CommandException("No more fuel");
     }
 }

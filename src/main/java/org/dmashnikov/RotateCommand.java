@@ -7,6 +7,9 @@ public class RotateCommand {
     }
 
     public void execute() {
-
+        int dir = rotableAdapter.getDirection();
+        int angV = rotableAdapter.getAngularVelocity();
+        int dirNum = rotableAdapter.getDirectionNumber();
+        rotableAdapter.setDirection((dir + angV)%dirNum);
     }
 }

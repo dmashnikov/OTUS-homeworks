@@ -5,13 +5,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class LogCommand implements ICommand {
-    private static Logger logger = LoggerFactory.getLogger(LogCommand.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(LogCommand.class);
 
-    @Override
-    public void execute() { }
+    private final ICommand command;
 
-    @Override
-    public void execute(ICommand command) {
-        logger.info("Выброшено исключение команды: %s", command);
+    public LogCommand(ICommand command) {
+        this.command = command;
     }
+
+    @Override
+    public void execute() {
+        LOGGER.info("Ошибка при выполнении команды: " + command.toString());
+    }
+
 }

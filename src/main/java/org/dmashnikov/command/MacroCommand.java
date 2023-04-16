@@ -1,5 +1,6 @@
 package org.dmashnikov.command;
 
+import org.dmashnikov.exception.ExceptionHandler;
 import org.dmashnikov.model.ICommand;
 
 import java.util.List;
@@ -13,8 +14,9 @@ public class MacroCommand implements ICommand {
 
     @Override
     public void execute() {
-        commands.forEach(c -> {
-            c.execute();
+
+        commands.forEach(command -> {
+            command.execute();
         });
     }
 }
